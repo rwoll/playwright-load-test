@@ -1,3 +1,5 @@
+See here for a [spreadsheet of the data](https://docs.google.com/spreadsheets/d/1fUgTg8AlTwsABFJOYkKQzMDDRU5sn18llPO_xrYabXk/edit#gid=1819160368).
+
 An unscientific load test of Playwright contexts across browser and OSes.
 
 An unexhaustive list of flaws in this testing logic:

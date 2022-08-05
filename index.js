@@ -18,7 +18,7 @@ log(
   [
     "platform",
     "browser",
-    "size",
+    "parallel contexts",
     "overall time",
     "avg",
     "pass rate",

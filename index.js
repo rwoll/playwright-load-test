@@ -1,12 +1,12 @@
 const os = require("os");
-const fs = require('fs');
+const fs = require("fs");
 const { chromium, firefox, webkit, expect } = require("@playwright/test");
 const browsers = [chromium, firefox, webkit];
 
 const TRIALS = 3;
 const MAX_PARALLEL_TESTS = 150;
 const STEP_SIZE = 50;
-const OUT_FILENAME = 'results.txt';
+const OUT_FILENAME = "results.txt";
 
 const _logs = [];
 const log = (msg) => {
@@ -52,6 +52,7 @@ log(
         const end = Date.now();
         const pass = outcomes.filter((o) => o === "pass").length;
         const ellapsed = end - start;
+        const passPct = Math.floor((pass / size) * 100);
         log(
           [
             os.platform(),
@@ -59,10 +60,16 @@ log(
             size,
             ellapsed + "ms",
             Math.ceil(ellapsed / size) + "ms",
-            Math.floor((pass / size) * 100) + "%",
+            passPct + "%",
             pass,
           ].join("\t")
         );
+
+        // If perf is so bad, cut it short and move on
+        if (passPct < 50 || ellapsed > 10 * 60 * 1000 /* 10 minutes */) {
+          trial = Infinity;
+          size = Infinity;
+        }
       }
       if (size === 1) size = 0;
     }
@@ -72,4 +79,3 @@ log(
   console.error();
   console.error("results written to " + OUT_FILENAME);
 })();
-

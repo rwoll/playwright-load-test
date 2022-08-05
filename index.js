@@ -3,8 +3,8 @@ const fs = require('fs');
 const { chromium, firefox, webkit, expect } = require("@playwright/test");
 const browsers = [chromium, firefox, webkit];
 
-const TRIALS = 5;
-const MAX_PARALLEL_TESTS = 200;
+const TRIALS = 3;
+const MAX_PARALLEL_TESTS = 150;
 const STEP_SIZE = 50;
 const OUT_FILENAME = 'results.txt';
 

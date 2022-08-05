@@ -1,0 +1,11 @@
+{
+  "name": "@rwoll/playwright-load-test",
+  "version": "0.0.1-alpha",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./index.js"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.24.2"
+  }
+}
